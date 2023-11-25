@@ -7,4 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/mib2")
 public class ApiController {
 
+
+
+
+
+
 }
