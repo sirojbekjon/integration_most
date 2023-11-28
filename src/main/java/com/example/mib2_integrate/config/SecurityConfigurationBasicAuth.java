@@ -15,8 +15,6 @@ import java.util.Optional;
 
 @Configuration
 public class SecurityConfigurationBasicAuth {
-    //No More WebSecurityConfigurerAdapter
-
     @Autowired
     UserRepository userRepository;
 
@@ -34,18 +32,6 @@ public class SecurityConfigurationBasicAuth {
                 .roles("INTEGRATION")
                 .build();
         return new InMemoryUserDetailsManager(user1);
-
-//        UserDetails user1 = User.builder()
-//                .username("siroj")
-//                .password(encoder().encode("important"))
-//                .roles("CAPTAIN", "CREW")
-//                .build();
-//        UserDetails user2 = User.builder()
-//                .username("henrik")
-//                .password(encoder().encode("important"))
-//                .roles("CREW")
-//                .build();
-//        return new InMemoryUserDetailsManager(user1, user2);
     }
 
         @Bean

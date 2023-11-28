@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>springboot-security-2022</artifactId>
+    <artifactId>mib2_integrate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-security-2022</name>
-    <description>springboot-security-2022</description>
+    <name>mib2_integrate</name>
+    <description>mib2_integrate</description>
     <properties>
         <java.version>19</java.version>
     </properties>
@@ -57,9 +57,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.12.5</version> <!-- Use the latest version available -->
         </dependency>
-
-
-
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>

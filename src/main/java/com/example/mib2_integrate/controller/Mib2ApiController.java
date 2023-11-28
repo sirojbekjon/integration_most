@@ -30,5 +30,4 @@ public class Mib2ApiController {
             return ResponseEntity.status(404).body("Not Found");
         }
     }
-
 }

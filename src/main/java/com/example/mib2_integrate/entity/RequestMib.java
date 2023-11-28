@@ -17,11 +17,9 @@ import java.sql.Timestamp;
 @Data
 public class RequestMib {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     @Column(updatable = false,nullable = false)
     @CreationTimestamp
@@ -44,7 +42,6 @@ public class RequestMib {
     private String pinfl;
 
     private boolean status=false;
-
 
     public RequestMib(String transaction_id, String sender_pnfl, String purpose, String consent, String pinfl) {
         this.transaction_id = transaction_id;
