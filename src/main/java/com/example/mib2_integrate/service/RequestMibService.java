@@ -53,21 +53,32 @@ public class RequestMibService {
                         if (object instanceof Object[]) {
                             Object[] arrayObject = (Object[]) object;
 
-                            Optional<Region> region = null;
-                            Optional<City> city = null;
-                            Optional<District> district = null;
+                            Optional<Region> region;
+                            Optional<District> district;
+                            Optional<City> city;
+
+                            String viloyat="topilmadi";
+                            String tuman="topilmadi";
+                            String shahar="topilmadi";
+
                             if (arrayObject[41] != null && arrayObject[41] instanceof Number) {
-
-                                Long regionId = ((Number) arrayObject[41]).longValue();
-//                                Long cityId = ((Number) arrayObject[37]).longValue();
-                                Long districtId = ((Number) arrayObject[38]).longValue();
-
-                                region = regionRepository.findByIdRegion(Long.valueOf(regionId));
-                                district = districtRepository.findByIdDistrict(Long.valueOf(districtId));
-//                                city = cityRepository.findByIdCity(Long.valueOf(cityId));
-
+                                if (arrayObject[41]!=null) {
+                                    Long regionId = ((Number) arrayObject[41]).longValue();
+                                    region = regionRepository.findByIdRegion(Long.valueOf(regionId));
+                                    viloyat = region.get().getName();
+                                }
+                                if (arrayObject[38]!=null) {
+                                    Long districtId = ((Number) arrayObject[38]).longValue();
+                                    district = districtRepository.findByIdDistrict(Long.valueOf(districtId));
+                                    tuman = district.get().getName();
+                                }
+                                if (arrayObject[37]!=null) {
+                                    Long cityId = ((Number) arrayObject[37]).longValue();
+                                    city = cityRepository.findByIdCity(Long.valueOf(cityId));
+                                    shahar = city.get().getName();
+                                }
                         }
-                            responseDto.setAddress("Viloyati:" + region.get() + ", Tumani"+district.get());
+                            responseDto.setAddress("Viloyati: " + viloyat  +", Shahari: " + shahar + ", Tumani: "+ tuman);
                             responseDto.setFirst_name((String) arrayObject[14]);
                             responseDto.setPinfl((String) arrayObject[16]);
                             responseDto.setMiddle_name((String) arrayObject[12]);
@@ -75,16 +86,14 @@ public class RequestMibService {
                             responseDto.setPassport_number((String) arrayObject[15]);
                             responseDto.setPassport_series((String) arrayObject[19]);
                             responseDto.setDate_of_birth((String) arrayObject[4]);
-
                         }
                     }
                     requestMib.setStatus(true);
                     requestRepository.save(requestMib);
                 }
                 return objects.length > 0
-                        ? ResponseEntity.status(202).body(responseDto)
+                        ? ResponseEntity.status(200).body(responseDto)
                         : ResponseEntity.status(404).body("Not Found");
-
         }
         catch (DataAccessException ex){
             System.out.println(ex.getMessage());

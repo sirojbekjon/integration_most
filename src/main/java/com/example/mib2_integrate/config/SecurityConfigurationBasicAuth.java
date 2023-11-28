@@ -27,7 +27,7 @@ public class SecurityConfigurationBasicAuth {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
-        Optional<com.example.mib2_integrate.entity.User> username = userRepository.findByFullName("sss");
+        Optional<com.example.mib2_integrate.entity.User> username = userRepository.findByFullName("mib2_integration_center");
         UserDetails user1 = User.builder()
                 .username(username.get().getUsername())
                 .password(username.get().getPassword())
@@ -55,7 +55,6 @@ public class SecurityConfigurationBasicAuth {
                     .cors().and()
                     .authorizeHttpRequests((authz) -> authz
                             .antMatchers("/api/mib2/**").hasRole("INTEGRATION")
-                            .antMatchers("/cantina/**").hasRole("CREW")
                             .anyRequest().authenticated()
                     )
                     .httpBasic(Customizer.withDefaults());
