@@ -1,4 +1,4 @@
-package com.example.springbootsecurity2022.entity;
+package com.example.mib2_integrate.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

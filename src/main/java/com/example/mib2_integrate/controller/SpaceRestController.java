@@ -1,4 +1,4 @@
-package com.example.springbootsecurity2022.controller;
+package com.example.mib2_integrate.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

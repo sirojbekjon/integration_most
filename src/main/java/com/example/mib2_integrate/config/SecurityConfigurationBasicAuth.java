@@ -1,6 +1,5 @@
-package com.example.springbootsecurity2022.config;
-
-import com.example.springbootsecurity2022.repository.UserRepository;
+package com.example.mib2_integrate.config;
+import com.example.mib2_integrate.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,18 +25,15 @@ public class SecurityConfigurationBasicAuth {
         return new BCryptPasswordEncoder();
     }
 
-
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
-        Optional<com.example.springbootsecurity2022.entity.User> username = userRepository.findByFullName("SuperAdmin");
-
+        Optional<com.example.mib2_integrate.entity.User> username = userRepository.findByFullName("sss");
         UserDetails user1 = User.builder()
                 .username(username.get().getUsername())
                 .password(username.get().getPassword())
                 .roles("INTEGRATION")
                 .build();
         return new InMemoryUserDetailsManager(user1);
-
 
 //        UserDetails user1 = User.builder()
 //                .username("siroj")
@@ -58,7 +54,7 @@ public class SecurityConfigurationBasicAuth {
                     .csrf().disable()
                     .cors().and()
                     .authorizeHttpRequests((authz) -> authz
-                            .antMatchers("/navigation/**").hasRole("INTEGRATION")
+                            .antMatchers("/api/mib2/**").hasRole("INTEGRATION")
                             .antMatchers("/cantina/**").hasRole("CREW")
                             .anyRequest().authenticated()
                     )

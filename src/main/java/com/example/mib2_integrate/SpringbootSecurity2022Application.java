@@ -1,4 +1,4 @@
-package com.example.springbootsecurity2022;
+package com.example.mib2_integrate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
