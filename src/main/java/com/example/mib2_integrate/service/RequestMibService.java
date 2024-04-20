@@ -44,15 +44,14 @@ public class RequestMibService {
                     requestDto.getConsent(),
                     requestDto.getPinfl());
             requestRepository.save(requestMib);
-            System.out.println(requestDto.getPinfl());
 
             Optional<Object[]> optionalResponseDto = requestRepository.getRequestMibPinfl(requestDto.getPinfl());
                 Object[] objects = optionalResponseDto.get();
                 if (objects.length > 0) {
                     for (Object object : objects) {
+
                         if (object instanceof Object[]) {
                             Object[] arrayObject = (Object[]) object;
-
                             Optional<Region> region;
                             Optional<District> district;
                             Optional<City> city;
@@ -100,5 +99,4 @@ public class RequestMibService {
             return ResponseEntity.status(409).body(ex.getMessage());
         }
     }
-
 }

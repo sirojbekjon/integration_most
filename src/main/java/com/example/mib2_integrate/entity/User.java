@@ -18,5 +18,7 @@ public class User {
     private String fullName;
     private String username;
     private String password;
-
+    // Yagona integrator
+    // 0512@2023
+    //ip 10.190.24.246:8090
 }

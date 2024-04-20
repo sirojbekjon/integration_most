@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Configuration
 public class SecurityConfigurationBasicAuth {
+
     @Autowired
     UserRepository userRepository;
 
